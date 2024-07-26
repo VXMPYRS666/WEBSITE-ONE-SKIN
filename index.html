@@ -19,10 +19,12 @@
         }
         .content {
             max-width: 600px;
-            padding: 20px;
+            padding: 40px 20px; /* Increased padding to move content down */
+            background-color: rgba(0, 0, 0, 0.8); /* Optional: added background for contrast */
+            border-radius: 8px; /* Optional: added border radius for styling */
         }
         .countdown {
-            margin-top: 20px;
+            margin-bottom: 20px;
             font-size: 2em;
         }
         img {
@@ -36,8 +38,8 @@
         <p>THE SIGHTINGS OF HXLLBORN HAVE BEEN CONFIRMED BY AN ANONYMOUS TIPPER.</p>
         <p>THANK YOU FOR YOUR COOPERATION. - DESPXIR INC. &#8482;</p>
         <p>THE SHADOWS GROW LONGER, AND THE HORIZON BECKONS...</p>
-        <img src="HXLLBORN.jpg" alt="HXLLBORN">
         <div class="countdown" id="countdown">Loading countdown...</div>
+        <img src="HXLLBORN.jpg" alt="HXLLBORN">
     </div>
 
     <script>
@@ -54,11 +56,12 @@
                 const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+                const milliseconds = Math.floor(timeRemaining % 1000 / 10); // milliseconds to tenths of a second
 
-                countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+                countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s ${milliseconds}ms`;
 
                 if (timeRemaining > 0) {
-                    setTimeout(update, 1000);
+                    setTimeout(update, 50); // Update every 50 milliseconds
                 } else {
                     countdownElement.innerHTML = "Time's up!";
                 }
@@ -71,4 +74,5 @@
     </script>
 </body>
 </html>
+
 
