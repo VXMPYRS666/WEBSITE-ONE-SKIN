@@ -9,27 +9,33 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh; /* Ensure full height */
             background-color: #000;
             color: #fff;
             text-align: center;
-            font-family: Arial, sans-serif;
+            font-family: sans-serif; /* Default font */
             margin: 0;
             padding: 0;
         }
         .content {
             max-width: 600px;
-            padding: 40px 20px; /* Increased padding to move content down */
-            background-color: rgba(0, 0, 0, 0.8); /* Optional: added background for contrast */
-            border-radius: 8px; /* Optional: added border radius for styling */
+            padding: 40px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            margin: 20px; /* Ensure some margin for visibility */
         }
-        .countdown {
+        .end-date {
             margin-bottom: 20px;
             font-size: 2em;
+            color: #FF0000; /* Blood Red */
         }
         img {
             margin-top: 20px;
             max-width: 100%;
+        }
+        .bottom-text {
+            margin-top: 20px;
+            font-size: 1.5em;
         }
     </style>
 </head>
@@ -37,42 +43,13 @@
     <div class="content">
         <p>THE SIGHTINGS OF HXLLBORN HAVE BEEN CONFIRMED BY AN ANONYMOUS TIPPER.</p>
         <p>THANK YOU FOR YOUR COOPERATION. - DESPXIR INC. &#8482;</p>
-        <p>THE SHADOWS GROW LONGER, AND THE HORIZON BECKONS...</p>
-        <div class="countdown" id="countdown">Loading countdown...</div>
+        <div class="end-date">
+            COUNTDOWN ENDS ON: <span style="color: #FF0000;">August 9, 2024</span>
+        </div>
         <img src="HXLLBORN.jpg" alt="HXLLBORN">
+        <div class="bottom-text">
+            THE SHADOWS GROW LONGER, AND THE HORIZON BECKONS...
+        </div>
     </div>
-
-    <script>
-        function updateCountdown() {
-            const countdownElement = document.getElementById('countdown');
-            const endDate = new Date();
-            endDate.setDate(endDate.getDate() + 14); // 2 weeks from now
-
-            function update() {
-                const now = new Date();
-                const timeRemaining = endDate - now;
-
-                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
-                const milliseconds = Math.floor(timeRemaining % 1000 / 10); // milliseconds to tenths of a second
-
-                countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s ${milliseconds}ms`;
-
-                if (timeRemaining > 0) {
-                    setTimeout(update, 50); // Update every 50 milliseconds
-                } else {
-                    countdownElement.innerHTML = "Time's up!";
-                }
-            }
-
-            update();
-        }
-
-        updateCountdown();
-    </script>
 </body>
 </html>
-
-
