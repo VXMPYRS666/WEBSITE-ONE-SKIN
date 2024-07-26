@@ -3,23 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WELCOME TO THE GAME.</title>
+    <title>UPDATE</title>
     <style>
         body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            background-color: black;
-            color: white;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
             font-family: Arial, sans-serif;
-            font-size: 24px;
+        }
+        .content {
+            max-width: 600px;
+            padding: 20px;
+        }
+        .countdown {
+            margin-top: 20px;
+            font-size: 2em;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 100%;
         }
     </style>
 </head>
 <body>
-    <p>HXLLBORN IS CONFIRMED ALIVE.</p>
+    <div class="content">
+        <p>THE SIGHTINGS OF HXLLBORN HAVE BEEN CONFIRMED BY AN ANONYMOUS TIPPER.</p>
+        <p>THANK YOU FOR YOUR COOPERATION. - DESPXIR INC. &#8482;</p>
+        <p>THE SHADOWS GROW LONGER, AND THE HORIZON BECKONS...</p>
+        <img src="HXLLBORN.jpg" alt="HXLLBORN">
+        <div class="countdown" id="countdown"></div>
+    </div>
+
+    <script>
+        function updateCountdown() {
+            const countdownElement = document.getElementById('countdown');
+            const endDate = new Date(Date.now() + 14 * 24 * 60 * 60 * 1000); // 2 weeks from now
+            const now = new Date();
+            const timeRemaining = endDate - now;
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+            countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (timeRemaining > 0) {
+                setTimeout(updateCountdown, 1000);
+            } else {
+                countdownElement.innerHTML = "Time's up!";
+            }
+        }
+
+        updateCountdown();
+    </script>
 </body>
 </html>
